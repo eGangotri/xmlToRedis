@@ -15,16 +15,18 @@ function redisClient(){
     client.on('error', (err) => console.log('Redis Client Error', err));
     return client;
 }
-export async function setValues(values: any) {
+export async function setValues(configTuple:any) {
     const client = redisClient();
     await client.connect();
-    await client.set('key', 'value');
+    for ( let tuple of configTuple){
+        await client.set(tuple[0], tuple[1]);
+    }
 }
 
-export async function getValues() {
+export async function getValues(_key:any) {
     const client = redisClient();
     client.on('error', (err) => console.log('Redis Client Error', err));
     await client.connect();
-    const value = await client.get('key');
+    const value = await client.get(_key);
     return value;
 }

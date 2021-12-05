@@ -1,5 +1,12 @@
 # xmlToRedis
 
+# Run by issuing following 2 commands
+
+## yarn install
+## yarn run xml2redis
+
+### Original Instructions
+
 Please prepare a simple app for exporting data from XML file to Redis( https://redis.io/ ).
 
 From attached config.xml export data to Redis keys:
