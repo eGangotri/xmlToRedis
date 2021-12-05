@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "xml2redis": "ts-node ./index.ts"
+    "xml2redis": "ts-node ./index.ts",
+    "xml2redis_verbose": "ts-node ./verbose.ts"
   },
   "author": "",
   "license": "ISC",

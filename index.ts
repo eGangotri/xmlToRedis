@@ -12,14 +12,20 @@ async function xml2Redis(xmlAsJson: any) {
     await Redis.setValues(configTuple);
 }
 
-async function readRedisValues() {
+async function readRedisValues(verboseFlag:boolean = false) {
     const subdomains = await Redis.getValues("subdomains");
     const avgCookie = await Redis.getValues("cookie:dlp-avg:vector");
-    //console.log(`subdomains: ${subdomains}`);
-    //console.log(`avgCookie: ${avgCookie}`);
+    if(verboseFlag){
+        console.log(`subdomains: ${subdomains}`);
+        console.log(`avgCookie: ${avgCookie}`);
+    }
 }
 
-const xmlAsJson = xmlToJson('config.xml');
-xml2Redis(xmlAsJson);
-readRedisValues();
+export async function execute(fileName:string,verboseFlag:boolean = false){
+const xmlAsJson = xmlToJson(fileName || 'config.xml',verboseFlag);
+await xml2Redis(xmlAsJson);
+await readRedisValues(verboseFlag);
 process.exit(0)
+}
+
+execute("");
