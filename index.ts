@@ -15,6 +15,8 @@ async function xml2Redis(xmlAsJson: any) {
 async function readRedisValues() {
     const subdomains = await Redis.getValues("subdomains");
     const avgCookie = await Redis.getValues("cookie:dlp-avg:vector");
+    //console.log(`subdomains: ${subdomains}`);
+    //console.log(`avgCookie: ${avgCookie}`);
 }
 
 const xmlAsJson = xmlToJson('config.xml');
