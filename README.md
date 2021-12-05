@@ -7,5 +7,7 @@ I have used nodejs to implement the Code.
 
 ## yarn install
 ## yarn run xml2redis
+## OR ./export.sh -v 'config.xml'
+## which will run yarn run xml2redis with the configurations
 
 Pls read README.rtf for my notes with explanations

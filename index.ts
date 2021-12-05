@@ -22,6 +22,20 @@ async function readRedisValues(verboseFlag:boolean = false) {
 }
 
 export async function execute(fileName:string,verboseFlag:boolean = false){
+    const arg1 = process.argv[2];
+    if(arg1){
+        if(process.argv[3]){
+            fileName = process.argv[3]
+            if(arg1 === '-v'){
+                verboseFlag = true;
+            }
+        }
+        else {
+            fileName = arg1 
+        }
+    }
+    console.log(`arg1: '${arg1}'`);
+
 const xmlAsJson = xmlToJson(fileName || 'config.xml',verboseFlag);
 await xml2Redis(xmlAsJson);
 await readRedisValues(verboseFlag);
